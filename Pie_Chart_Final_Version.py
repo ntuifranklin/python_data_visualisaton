@@ -7,6 +7,9 @@ from math import *
 #Angle of a whole circle
 WHOLE_CIRCLE = 360 # a circle has an angle of 360
 
+#declaring constants for colors
+MIN_COLOR = 128
+MAX_COLOR = 255
 length = WHOLE_CIRCLE + 1 # We want at most 360 numbers, so we initialize it to 361 or what ever maximum you choose + 1
 
 #We let the user select a radius for the circle
@@ -43,12 +46,12 @@ angle_painted = 0;
 
 #Let's draw and paint the first segments in the circle in case we have more than one number entered
 
-r = randint(0,255)
-g = randint(0,255)
-b = randint(0,255)
-angle1 = angles[0]
-
-turtle.colormode(255)
+#We start by generating random red green and blue values to make the color
+r = randint(MIN_COLOR,MAX_COLOR)
+g = randint(MIN_COLOR,MAX_COLOR)
+b = randint(MIN_COLOR,MAX_COLOR)
+angle1 = angles[0] # first angle
+turtle.colormode(255) # choose color pallette to accept rgb values between 0 and 255 inclusive
 couple = turtle.screensize() #not needed
 screen_length = couple[0]
 screen_width = couple[1]
@@ -96,9 +99,9 @@ if length > 1 :
 		else :
 			 turtle.left(angle_turn)
 
-		r = randint(0,255)
-		g = randint(0,255)
-		b = randint(0,255)
+		r = randint(MIN_COLOR,MAX_COLOR)
+		g = randint(MIN_COLOR,MAX_COLOR)
+		b = randint(MIN_COLOR,MAX_COLOR)
 		turtle.pendown() #press the pen down
 		turtle.fillcolor((r,g,b)) # choose the colour of the circle randomly
 		print("\nColour selected for number entered ",segments[i]," = ", ( '#%02x%02x%02x' % (r,g,b)), " angle = ",angles[i])
@@ -115,9 +118,9 @@ if length > 1 :
 		angle_painted += angles[i]
 
 	# Now we draw the third circle
-	r = randint(0,255)
-	g = randint(0,255)
-	b = randint(0,255)
+	r = randint(MIN_COLOR,MAX_COLOR)
+	g = randint(MIN_COLOR,MAX_COLOR)
+	b = randint(MIN_COLOR,MAX_COLOR)
 	turtle.goto(xorigin,yorigin) # We go back to the origin
 	angle3 = angles[length-1]
 	turtle.setheading(180) # We are facing west
